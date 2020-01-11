@@ -1,21 +1,19 @@
 class Person
 
+  attr_reader :name, :day, :month
+
   def initialize(name, day, month)
     @name = name
     @day = day
     @month = month
   end
 
-  def self.name
-    @name
+  def self.create
+    @person = Person.new(name, day, month)
   end
 
-  def self.day
-    @day
-  end
-
-  def self.month
-    @month
+  def self.instance
+    @person
   end
 
 end
