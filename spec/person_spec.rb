@@ -20,6 +20,9 @@ describe Person do
   end
 
   describe '#birthday_today?' do 
-    it { expect(subject.birthday_today?).to eq false }
+    it { expect(subject.birthday_today?(11)).to eq false }
+    it { expect(subject.birthday_today?(20)).to eq true }
   end
+
+
 end

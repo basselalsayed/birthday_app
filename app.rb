@@ -7,13 +7,17 @@ class Birthday < Sinatra::Base
     @person = Person.instance
   end
 
-  get '/' do 
+  get '/' do
     erb :index
   end
 
   post '/info' do
     @person = Person.create(params[:name], params[:birth_day], params[:birth_month])
-    @person.birthday_today? ? (redirect '/birthday') : (redirect '/not-birthday')
+    if params[:name].empty? || params[:birth_day].empty? || params[:birth_month].empty?
+      redirect '/error'
+    else
+      @person.birthday_today? ? (redirect '/birthday') : (redirect '/not-birthday')
+    end  
   end
 
   get '/birthday' do
@@ -24,4 +28,7 @@ class Birthday < Sinatra::Base
     erb :not_birthday
   end
 
+  get '/error' do 
+    erb :error
+  end
 end

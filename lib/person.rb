@@ -26,7 +26,7 @@ class Person
     birthday - today
   end
 
-  def birthday_today?
-    days_until_birthday == 0
+  def birthday_today?(today = CURRENT_DAY_OF_YEAR)
+    days_until_birthday(today) == 0
   end
 end
