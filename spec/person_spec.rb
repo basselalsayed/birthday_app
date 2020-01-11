@@ -1,11 +1,25 @@
 require 'person'
 
 describe Person do 
-  let(:subject) { described_class.new('tom', 16, 'march') }
+  let(:subject) { described_class.new('tom', 20, 1) }
 
   describe '#initialization' do 
     it { expect(subject.name).to eq 'tom' }
-    it { expect(subject.day).to eq 16 }
-    it { expect(subject.month).to eq 'march' }
+  end
+
+  describe 'CURRENT_YEAR' do 
+    it { expect(Person::CURRENT_YEAR).to eq 2020 }
+  end
+
+  describe '#birthday' do 
+    it { expect(subject.birthday).to eq 20 }
+  end
+
+  describe '#days_until_birthday' do 
+    it { expect(subject.days_until_birthday(11)). to eq 9 }
+  end
+
+  describe '#birthday_today?' do 
+    it { expect(subject.birthday_today?).to eq false }
   end
 end

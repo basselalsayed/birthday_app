@@ -13,7 +13,7 @@ class Birthday < Sinatra::Base
 
   post '/info' do
     @person = Person.create(params[:name], params[:birth_day], params[:birth_month])
-    redirect '/birthday'
+    @person.birthday_today? ? (redirect '/birthday') : (redirect '/not-birthday')
   end
 
   get '/birthday' do
@@ -21,6 +21,7 @@ class Birthday < Sinatra::Base
   end
 
   get '/not-birthday' do 
+    erb :not_birthday
   end
 
 end
